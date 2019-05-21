@@ -4,12 +4,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이지스퍼블리싱 신간</title>
+    <title>Minseok Choi's Portfolio</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.5/fullpage.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.5/fullpage.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Flowtype.js/1.1.0/flowtype.min.js"></script> -->
+    
+    
     <!-- <link href="css/style.css" rel="stylesheet"> -->
 </head>
 
@@ -21,6 +27,10 @@
     /* .show {
         display:block;
     } */
+    *{
+        padding:0;
+        margin:0;
+    }
     div.active {
         background: red;
     }
@@ -29,9 +39,146 @@
         display: none;
     }
 
+    #intro {
+        width:100%;
+        height:100%;
+        font-family:sans-serif;
+        background:black;
+        height:100%;
+        position:relative;
+    }
+
+    .intro-inner {
+        text-align:center;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        width:80%;
+        margin:0 auto;
+    }
+    .intro-inner span {
+        color:white;
+        text-align:center;
+        text-transform:uppercase;
+        display:inline-block;
+        
+    }
+    .text1 {
+        width:100%;
+        /* margin:0 auto; */
+        font-size:60px;
+        font-weight:700;
+        letter-spacing:8px;
+        margin-bottom:20px;
+        animation:textAnimation 3s 1;
+    }
+    .text2 {
+        width:80%;
+        /* margin:0 auto; */
+        font-size:30px; 
+        letter-spacing:0px;
+        animation:textAnimation2 3s 1;
+    }
+
+    @keyframes textAnimation {
+        0% {
+            letter-spacing:40px;
+            margin-bottom:-40px;
+        }
+        30% {
+            letter-spacing:25px;
+            margin-bottom:-30px;
+        }
+        85% {
+            letter-spacing:8px;
+            margin-bottom:-10px;
+        }
+    }
+
+    @keyframes textAnimation2 {
+        0% {
+            letter-spacing:30px;
+            margin-bottom:-40px;
+        }
+        30% {
+            letter-spacing:40px;
+            margin-bottom:-25px;
+        }
+        85% {
+            letter-spacing:10;
+            margin-bottom:-20px;
+        }
+    }
+
+    @keyframes textAnimation3 {
+        0% {
+            margin-bottom:-40px;
+        }
+        30% {
+            margin-bottom:-25px;
+        }
+        85% {
+            margin-bottom:-20px;
+        }
+    }
+
+    
+
+    #fullpage {
+        height:100%;
+    }
+    .section, .slide {
+        width:100%;
+        height:100%;
+        text-align:center;
+        margin:0 auto;
+        position:relative;
+    }
+    .container {
+        text-align:center;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        width:100%;
+        margin:0 auto;
+    }
+
+    #topic {
+        text-align:center;
+        position:absolute;
+        top:20%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        width:100%;
+        margin:0 auto;
+    }
+
+    @media screen and (max-width:480px) {
+        .intro-inner {
+            width:100%;
+            text-align:center;
+            overflow: hidden;
+        }
+        .text1 {
+            animation:textAnimation3 2s 1;
+        }
+        .text2 {
+            animation:textAnimation3 2s 1;
+        }
+        .owl-dots {
+            display:none;
+        }
+    }
+
 </style>
 <script>
+    // $('body').flowtype();
     $(function () {
+        
+        var numberSlide;
+
         new fullpage('#fullpage', {
             anchors: ["homeAnc", "portfolioAnc", "profileAnc", "contactAnc"],
             menu: "#topMenu",
@@ -41,15 +188,76 @@
 
         setTimeout(function () {
             $("#intro").slideUp("slow")
-        }, 3000);
+        }, 3500);
 
         setTimeout(function () {
             $("nav.navbar").toggleClass("hide").slideDown("slow");
-        }, 4000);
+        }, 4500);
 
         setTimeout(function () {
             $("#fullpage").toggleClass("hide").slideDown("slow");
         }, 5000);
+
+        if($(window).width()>720) {
+            numberSlide=3;
+        } else {
+            numberSlide=1;
+        }
+        // $(".section, .fp-tableCell").attr('style',$(window).height());
+
+        $('.owl-carousel').owlCarousel({
+			items:numberSlide,
+			margin:10,
+			loop:true,
+            nav:true,
+            navText:['Prev','Next'],					
+			autoplay:true,
+            autoplayTimeout:3000,
+            autoplayHoverPause:true
+		});
+
+        $('.owl-carousel').on('changed.owl.carousel', function(e) {
+            if($(window).width()>720) {
+                $("#topic").text($("div.owl-item.active:eq(2) img").data("name"));
+                $("#site").attr("href",$("div.owl-item.active:eq(2) img").data("site"));
+                $("#github").attr("href",$("div.owl-item.active:eq(2) img").data("hub"));
+            } else {
+                $("#topic").text($("div.owl-item.active").next("div").find("img").data("name"));
+                $("#site").attr("href",$("div.owl-item.active").next("div").find("img").data("site"));
+                $("#github").attr("href",$("div.owl-item.active").next("div").find("img").data("hub"));
+            }
+        });
+
+        $(window).resize(function () {
+			if($(window).width()>=720) {
+                numberSlide=3;
+            } else {
+                numberSlide=1;
+            }
+            $('.owl-carousel').owlCarousel({
+                items:numberSlide,
+                margin:10,
+                loop:true,
+                nav:true,
+                navText:['Prev','Next'],					
+                autoplay:true,
+                autoplayTimeout:1000,
+                autoplayHoverPause:true
+		    });
+            $('.owl-carousel').on('changed.owl.carousel', function(e) {
+                if($(window).width()>720) {
+                    $("#topic").text($("div.owl-item.active:eq(2) img").data("name"));
+                    $("#site").attr("href",$("div.owl-item.active:eq(2) img").data("site"));
+                    $("#github").attr("href",$("div.owl-item.active:eq(2) img").data("hub"));
+                } else {
+                    $("#topic").text($("div.owl-item.active").next("div").find("img").data("name"));
+                    $("#site").attr("href",$("div.owl-item.active").next("div").find("img").data("site"));
+                    $("#github").attr("href",$("div.owl-item.active").next("div").find("img").data("hub"));
+                }
+            });
+        });
+
+
 
 
         // $("div.inner").animate({transform:"translate3d(0px, 15px,0px)"},5000)
@@ -73,7 +281,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top hide">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Minseok Choi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -83,9 +291,14 @@
                 <li class="nav-item" data-menuanchor="homeAnc">
                     <a class="nav-link" href="#homeAnc">Home</a>
                 </li>
-                <li class="nav-item" data-menuanchor="portfolioAnc">
-                    <a class="nav-link" href="#portfolioAnc">Portfolio</a>
+                <li class="nav-item dropdown" data-menuanchor="portfolioAnc" >
+                    <a class="nav-link" href="#portfolioAnc" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Portfolio</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#portfolioAnc/portfolio2">Molecular Dynamics(ph.D)</a>
+                        <a class="dropdown-item" href="#portfolioAnc/portfolio3">Web Development</a>
+                    </div>
                 </li>
+
                 <li class="nav-item" data-menuanchor="profileAnc">
                     <a class="nav-link" href="#profileAnc">Profile</a>
                 </li>
@@ -95,41 +308,67 @@
             </ul>
         </div>
     </nav>
-    <!-- <div class="section" id="intro">
-            <div class="intro-inner">
-                <h1 style="transform:matrix(1,0,0,1,0,-10);">
-                    <div class="inner" style="transform: translate(0%,-110%) matrix(1,0,0,1,0,0);">Minseok Choi</div>
-                </h1>
-            </div>
-        </div> -->
+
     <div class="section" id="intro">
         <div class="intro-inner">
             <h1>
                 <span class="text1">Minseok Choi</span>
             </h1>
             <h1>
-                <span class="text2">Wep Developer, Full Stack Developer</span>
+                <span class="text2">Wep Developer<br>Full Stack Developer</span>
             </h1>
         </div>
     </div>
 
     <div id="fullpage" class="hide">
         <div class="section" id="home" data-anchor="homeAnc">
-            home
+            <div class="container">
+                <img src="images/Choi.jpg" alt="My Picture.jpg">
+                <p>Hi, I'm Minseok Choi. I'm from South Korea. If you feel difficult in calling my name, just call me Mr. Choi. <br><br>
+                    I was born in Seoul, the capitial city of South Korea. I majored in Mechanical Engineering, and I had a ph.D degree in Mechanical Engineering because I liked my major. <br><br>
+                    During ph.D and after ph.D, I mainly had tasks of making a certain program (Molecular Dynamics) using computer language cording. For this reason, during the work, I had to study making logical codes, and I also liked doing it as well. I studied a few computer languages such as Fortran, C language, and Java. <br><br> 
+                    And also I had an experience making laboratory homepages connecting with Oracle Database using JSP. This experience is a quite fun for me. I really want to study more about that, so I moved alone to Ausin in Texas and I resistered for UT bootcamp, and now I'm studying it in bootcamp. <br><br>
+                    I'm not good at English, so sometimes I can misunderstand what you're saying. If I didn't understand your meaning, it would be appreciate if you speak a little slowly.<br><br>
+                    <strong>My Dream : I really want to get an IT job in Texas, please help me!!!!!</strong>
+                </p>
+            </div>
         </div>
 
         <div class="section" id="portfolio" data-anchor="portfolioAnc">
-            <div class="slide" data-anchor="portfolio1">portfolio1</div>
-            <div class="slide" data-anchor="portfolio2">portfolio2adsfasfasfafadfasd</div>
-            <div class="slide" data-anchor="portfolio3">portfolio3adsfasfasfafadfasd</div>
+            <div class="slide" data-anchor="portfolio1"><div class="container">portfolio1afasdfasdfasfd</div></div>
+            <div class="slide" data-anchor="portfolio2"><div class="container">portfolio2adfafasdfasdf</div></div>
+            <div class="slide" data-anchor="portfolio3">
+                <h1 id="topic"></h1>
+                <div class="container">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item"><img src="images/portfolio1.jpg" data-name="Psychic-Game" data-site="https://shirano2.github.io/Psychic-Game/" data-hub="https://github.com/shirano2/Psychic-Game"></div>
+                        <div class="item"><img src="images/portfolio2.jpg" data-name="Word-Guess-Game" data-site="https://shirano2.github.io/Word-Guess-Game/" data-hub="https://github.com/shirano2/Word-Guess-Game"></div>
+                        <div class="item"><img src="images/portfolio3.jpg" data-name="Star Wars RPG" data-site="https://shirano2.github.io/unit-4-game/" data-hub="https://github.com/shirano2/StarWarsRpgGame"></div>
+                        <div class="item"><img src="images/portfolio4.jpg" data-name="Trivia Game" data-site="https://shirano2.github.io/TriviaGame/" data-hub="https://github.com/shirano2/TriviaGame"></div>
+                        <div class="item"><img src="images/portfolio5.jpg" data-name="GifTastic" data-site="https://shirano2.github.io/GifTastic/" data-hub="https://github.com/shirano2/GifTastic"></div>
+                        <div class="item"><img src="images/portfolio6.jpg" data-name="RockPaperScissors" data-site="https://shirano2.github.io/RPS-Multiplayer/" data-hub="https://github.com/shirano2/RPS-Multiplayer"></div>
+                        <div class="item"><img src="images/portfolio7.jpg" data-name="No Late Project" data-site="https://cf512.github.io/NoLate/" data-hub="https://github.com/cf512/NoLate"></div>
+                        <div class="item"><img src="images/portfolio8.jpg" data-name="FriendFinder" data-site="https://friend-finder-60463.herokuapp.com/" data-hub="https://github.com/shirano2/FriendFinder"></div>
+                        <div class="item"><img src="images/portfolio9.jpg" data-name="Burger" data-site="https://burger-52408.herokuapp.com/" data-hub="https://github.com/shirano2/burger"></div>
+                        <div class="item"><img src="images/portfolio10.jpg" data-name="SequelizedBurger" data-site="https://sequelizedburger-17636.herokuapp.com/" data-hub="https://github.com/shirano2/SequelizedBurger"></div>
+                        <div class="item"><img src="images/portfolio11.jpg" data-name="Mise en place" data-site="https://murmuring-brushlands-67751.herokuapp.com/" data-hub="https://github.com/Tothinator/project-2"></div>
+                        <div class="item"><img src="images/portfolio12.jpg" data-name="Scrape" data-site="https://scrape-22948.herokuapp.com/" data-hub="https://github.com/shirano2/scrape.git"></div>
+                        <div class="item"><img src="images/portfolio13.jpg" data-name="Clicky Game" data-site="https://shirano2.github.io/clicky-game/" data-hub="https://github.com/shirano2/clicky-game/tree/master"></div>
+                        <div class="item"><img src="images/portfolio14.jpg" data-name="Google-Books-Search" data-site="https://google-books-search123.herokuapp.com/" data-hub="https://github.com/shirano2/google-books-search"></div>
+                        <div class="item"><img src="images/portfolio15.jpg" data-name="Tweet Tracer" data-site="https://pure-escarpment-67547.herokuapp.com/" data-hub="https://github.com/ddtian38/twitter-analysis"></div> 
+                    </div>
+                    <a class="btn btn-primary" href="" role="button" target="_blank" id="site">Site</a>
+                    <a class="btn btn-primary" href="" role="button" target="_blank" id="github">Github</a>
+                </div>
+            </div>
         </div>
 
         <div class="section" id="profile" data-anchor="profileAnc">
-            profile
+            <div class="container">profile</div>
         </div>
 
         <div class="section" id="contact" data-anchor="contactAnc">
-            contact
+            <div class="container">contact</div>
         </div>
         
     </div>
