@@ -179,6 +179,15 @@
         margin-top:0;
     }
 
+    #con2 {
+        position: absolute;
+        top:50%;
+        left:50%;
+        background-image:url('images/bg01.jpg');
+        transform:translate(-50%,-50%);
+        background-size:cover;
+    }
+
     @keyframes moving {
         0% {
             margin-left:0px;
@@ -276,7 +285,7 @@
         #innerProfile {
             margin-left:12px;
         }
-        
+
         ul li {
             font-size: 14px;
         }
@@ -290,7 +299,7 @@
         var numberSlide;
 
         new fullpage('#fullpage', {
-            anchors: ["homeAnc", "portfolioAnc", "profileAnc", "contactAnc"],
+            anchors: ["homeAnc", "portfolioAnc","contactAnc"],
             menu: "#topMenu",
             autoScrolling:true,
 	        scrollHorizontally: true
@@ -391,10 +400,6 @@
                         <a class="dropdown-item" href="#portfolioAnc/portfolio3">Web Development</a>
                     </div>
                 </li>
-
-                <li class="nav-item" data-menuanchor="profileAnc">
-                    <a class="nav-link" href="#profileAnc">Profile</a>
-                </li>
                 <li class="nav-item" data-menuanchor="contactAnc">
                     <a class="nav-link" href="#contactAnc">Contact</a>
                 </li>
@@ -463,23 +468,48 @@
         <div class="section" id="portfolio" data-anchor="portfolioAnc">
             <div class="slide" data-anchor="portfolio1">
                 <div class="container">
-                        <div id="con2">
-                            <section class="row">
-                                <div class="col-md-6 col-sm-6">
-                                        <img src="images/Choi.jpg" alt="My Picture.jpg">
-       
-                                </div>	
-                                <div class="col-md-6 col-sm-6">
-                                    <p>Hi, I'm Minseok Choi. I'm from South Korea. If you feel difficult in calling my name, just call me Mr. Choi. <br><br>
-                                        I was born in Seoul, the capitial city of South Korea. I majored in Mechanical Engineering, and I had a ph.D degree in Mechanical Engineering because I liked my major. <br><br>
-                                        During ph.D and after ph.D, I mainly had tasks of making a certain program (Molecular Dynamics) using computer language cording. For this reason, during the work, I had to study making logical codes, and I also liked doing it as well. I studied a few computer languages such as Fortran, C language, and Java. <br><br> 
-                                        And also I had an experience making laboratory homepages connecting with Oracle Database using JSP. This experience is a quite fun for me. I really want to study more about that, so I moved alone to Ausin in Texas and I resistered for UT bootcamp, and now I'm studying it in bootcamp. <br><br>
-                                        I'm not good at English, so sometimes I can misunderstand what you're saying. If I didn't understand your meaning, it would be appreciate if you speak a little slowly.<br><br>
-                                        <strong>My Dream : I really want to get an IT job in Texas, please help me!!!!!</strong>
-                                    </p>
-                                </div>		
-                            </section>
-                        </div>
+                    <div id="con2">
+                        <!-- <img id="bg2" src="images/background.png"> -->
+                        <section class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-12"></div>	
+                            <div id="innerPortfolio" class="col-lg-6 col-md-9 col-sm-12" >
+                                <!-- <h3 id="hi">Hi, I'm Minseok Choi</h3>
+                                <br> -->
+                                <!-- <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12" id="experience">
+                                        <h4 class="blue">EXPERIENCE</h4>
+                                        <ul>
+                                            <li>
+                                                <strong>UT Austin coding Boot camp</strong><br>
+                                                Learned  HTML, CSS,  JS, JQuery, Responsive Design, Bootstrap, Node.js, React.js, mySQL, mongoDB, Laravel 
+                                            </li>
+                                            <li>
+                                                <strong>IT BANK</strong><br>
+                                                Learned HTML, CSS, JS, JQuery, BootStrap, JSP, Spring Framework with oracle DB
+                                            </li>
+                                            <li>
+                                                <strong>POSTECH (ph.D)</strong>
+                                                Developed simulation programs of dry cleaning process on surface of semiconductors with Fortran in Linux using Molecular Dynamics techniques
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12" id="skills">
+                                        <h4 class="blue">SKILLS</h4>
+                                        <ul>
+                                            <li>Molecular Dynamics(MD)</li>
+                                            <li>Fluid Simulation(Fluent)</li>
+                                            <li>CAD, 3D Inventor, Pro-E</li>
+                                            <li>C language, Fortran, Java, Python, MS office 2016</li>
+                                            <li>HTML5/CSS3, Bootstrap 4</li>
+                                            <li>Javascript, JQuery, JSP, node.js, React.js, Spring Framework 4.0</li>
+                                            <li>Oracle DB, MySQL, mongoDB, Firebase</li>
+                                            <li>Linux, Ubuntu</li>
+                                        </ul>
+                                    </div>
+                                </div>   -->
+                            </div>		
+                        </section>
+                    </div>
                 </div>
             </div>
             <div class="slide" data-anchor="portfolio2"><div class="container">portfolio2adfafasdfasdf</div></div>
@@ -507,10 +537,6 @@
                     <a class="btn btn-primary" href="" role="button" target="_blank" id="github">Github</a>
                 </div>
             </div>
-        </div>
-
-        <div class="section" id="profile" data-anchor="profileAnc">
-            <div class="container">profile</div>
         </div>
 
         <div class="section" id="contact" data-anchor="contactAnc">
