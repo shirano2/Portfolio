@@ -468,32 +468,7 @@
         });
 
         $(window).resize(function () {
-			if($(window).width()>=720) {
-                numberSlide=3;
-            } else {
-                numberSlide=1;
-            }
-            $('.owl-carousel').owlCarousel({
-                items:numberSlide,
-                margin:10,
-                loop:true,
-                nav:true,
-                navText:['Prev','Next'],					
-                autoplay:true,
-                autoplayTimeout:1000,
-                autoplayHoverPause:true
-		    });
-            $('.owl-carousel').on('changed.owl.carousel', function(e) {
-                if($(window).width()>720) {
-                    $("#topic").text($("div.owl-item.active:eq(2) img").data("name"));
-                    $("#site").attr("href",$("div.owl-item.active:eq(2) img").data("site"));
-                    $("#github").attr("href",$("div.owl-item.active:eq(2) img").data("hub"));
-                } else {
-                    $("#topic").text($("div.owl-item.active").next("div").find("img").data("name"));
-                    $("#site").attr("href",$("div.owl-item.active").next("div").find("img").data("site"));
-                    $("#github").attr("href",$("div.owl-item.active").next("div").find("img").data("hub"));
-                }
-            });
+			location.reload();
         });
     });
 </script>
