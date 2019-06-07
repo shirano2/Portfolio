@@ -128,15 +128,34 @@ section.row {
     color:rgb(72, 72, 235);
 }
 
-#experience ul, #skills ul {
+#bio, #education, #experience, #skills {
+    -webkit-border-radius: 0% 0% 100% 100% / 5px 5px 5px 5px;
+    -webkit-box-shadow: rgba(0, 0, 0,.30) 0 2px 3px;
+}
+
+#bio ul, #education ul, #experience ul, #skills ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    background-color:rgba(255, 255, 255, 0.3);
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 2px #fff inset,-1px -1px 2px #fff inset;
+    border-radius: 3px/6px;
 }
 
-#experience ul li, #skills ul li {
+#bio ul li, #education ul li, #experience ul li, #skills ul li {
     margin-bottom:10px;
     font-size: 20px;
+    background-color:white;
+    line-height:150%;
+}
+
+#innerProfile strong {
+    font-size:24px;
+}
+
+#innerProfile ul {
+    display:none;
 }
 
 #con2 {
@@ -229,6 +248,13 @@ section.row {
     width:100%;
     margin:0 auto;
     color:rgba(255, 255, 255, 0.85);
+}
+
+#discription {
+    padding:50px;
+    font-size:24px;
+    color:white;
+    height:100px;
 }
 
 #con4 {
@@ -435,6 +461,10 @@ section.row {
         color:cornsilk;
     }
 
+    #education {
+        display:none;
+    }
+
     #experience {
         display:none;
     }
@@ -472,10 +502,25 @@ section.row {
         padding-top:30px;
     }
 
+    #innerPortfolio2 {
+        top:55%;
+    }
+
+    #innerPortfolio3 {
+        top:60%;
+    }
+
+    #discription {
+        padding:10px;
+        font-size:18px;
+        color:white;
+        height:100px;
+    }
+
     .card {
         margin-top:50px;
         width:96%;
-        box-shadow : none;
+        box-shadow:none;
     }
 
     .card:hover::after {

@@ -21,7 +21,12 @@ $(function () {
     setTimeout(function () {
         $("#fullpage").toggleClass("hide").slideDown("slow");
     }, 4500);
-    
+
+    $("#innerProfile h4").on("click", function(){
+        $("#innerProfile ul").slideUp(400);
+        $(this).next().slideDown(400);
+    });
+
     if($(window).width()>720) {
         numberSlide=3;
     } else {
@@ -40,7 +45,7 @@ $(function () {
         nav:true,
         navText:['Prev','Next'],					
         autoplay:true,
-        autoplayTimeout:3000,
+        autoplayTimeout:6000,
         autoplayHoverPause:true
     });
 
@@ -49,10 +54,12 @@ $(function () {
             $("#topic").text($("div.owl-item.active:eq(2) img").data("name"));
             $("#site").attr("href",$("div.owl-item.active:eq(2) img").data("site"));
             $("#github").attr("href",$("div.owl-item.active:eq(2) img").data("hub"));
+            $("#discription").text($("div.owl-item.active:eq(2) img").data("discription"));
         } else {
             $("#topic").text($("div.owl-item.active").next("div").find("img").data("name"));
             $("#site").attr("href",$("div.owl-item.active").next("div").find("img").data("site"));
             $("#github").attr("href",$("div.owl-item.active").next("div").find("img").data("hub"));
+            $("#discription").text($("div.owl-item.active").next("div").find("img").data("discription"));
         }
     });
 
