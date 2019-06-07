@@ -156,6 +156,7 @@ section.row {
 
 #innerProfile h4 {
     display:none;
+    cursor:pointer;
 }
 
 #innerProfile ul {
