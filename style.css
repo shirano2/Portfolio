@@ -154,6 +154,10 @@ section.row {
     font-size:24px;
 }
 
+#innerProfile h4 {
+    display:none;
+}
+
 #innerProfile ul {
     display:none;
 }

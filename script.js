@@ -11,16 +11,17 @@ $(function () {
     });
 
     setTimeout(function () {
-        $("#intro").slideUp("slow")
+        $("#intro").slideUp("slow");
+        setTimeout(function () {
+            $("nav.navbar").toggleClass("hide").slideDown("slow");
+        }, 700);
+        setTimeout(function () {
+            $("#fullpage").toggleClass("hide").slideDown("slow");
+        }, 1000);
+        setTimeout(function () {
+            $("#innerProfile h4").fadeIn("slow");
+        }, 1500);
     }, 3500);
-
-    setTimeout(function () {
-        $("nav.navbar").toggleClass("hide").slideDown("slow");
-    }, 4200);
-
-    setTimeout(function () {
-        $("#fullpage").toggleClass("hide").slideDown("slow");
-    }, 4500);
 
     $("#innerProfile h4").on("click", function(){
         $("#innerProfile ul").slideUp(400);
@@ -45,7 +46,7 @@ $(function () {
         nav:true,
         navText:['Prev','Next'],					
         autoplay:true,
-        autoplayTimeout:6000,
+        autoplayTimeout:5000,
         autoplayHoverPause:true
     });
 
